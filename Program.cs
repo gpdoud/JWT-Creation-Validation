@@ -4,13 +4,6 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 
-Console.WriteLine("Hello, World!");
-
-var Subject = new ClaimsIdentity(new Claim[]
-{
-	new Claim("UserRole", "Administrator"),
-});
-
 var jwt = GenerateToken(1);
 Console.WriteLine(jwt);
 var validJwt = ValidateCurrentToken(jwt);
@@ -20,6 +13,10 @@ if(validJwt) {
 	Console.WriteLine("Invalid");
 }
 
+/*
+ * GenerateToken & ValidateCurrentToken methods
+ * Described in https://dotnetcoretutorials.com/2020/01/15/creating-and-validating-jwt-tokens-in-asp-net-core/
+ */
 string GenerateToken(int userId) {
 	var mySecret = "asdv234234^&%&^%&^hjsdfb2%%%";
 	var mySecurityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(mySecret));
